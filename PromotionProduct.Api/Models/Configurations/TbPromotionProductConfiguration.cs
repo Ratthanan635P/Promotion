@@ -24,9 +24,9 @@ namespace PromotionProduct.Api.Models.Configurations
 
 			  builder.Property(e => e.Image).IsRequired();
 
-			builder.Property(e => e.Status).HasColumnName("status");
+			  builder.Property(e => e.Status).HasColumnName("status");
 
-			builder.Property(e => e.Title).IsRequired();
+			  builder.Property(e => e.Title).IsRequired();
 			
 		}
 	}
