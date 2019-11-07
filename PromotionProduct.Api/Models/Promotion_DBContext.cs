@@ -16,9 +16,9 @@ namespace PromotionProduct.Api.Models
         {
         }
 
-        public virtual DbSet<TbPromotionProduct> TbPromotionProduct { get; set; }
-        public virtual DbSet<TbUser> TbUser { get; set; }
-        public virtual DbSet<TbUserPromotion> TbUserPromotion { get; set; }
+        public virtual DbSet<PromotionProductModel> Tb_PromotionProduct { get; set; }
+        public virtual DbSet<UserModel> Tb_User { get; set; }
+        public virtual DbSet<UserPromotionModel> Tb_UserPromotion { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

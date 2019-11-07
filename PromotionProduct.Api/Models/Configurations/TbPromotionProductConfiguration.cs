@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PromotionProduct.Api.Models.Configurations
 {
-	public class TbPromotionProductConfiguration : IEntityTypeConfiguration<TbPromotionProduct>
+	public class TbPromotionProductConfiguration : IEntityTypeConfiguration<PromotionProductModel>
 	{
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TbPromotionProduct> builder)
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<PromotionProductModel> builder)
 		{
 
 			   builder.ToTable("Tb_PromotionProduct");

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PromotionProduct.Api.Migrations
 {
-    public partial class init_Db : Migration
+    public partial class init_db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,6 +21,7 @@ namespace PromotionProduct.Api.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Tb_PromotionProduct", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,12 +30,13 @@ namespace PromotionProduct.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    email = table.Column<string>(maxLength: 50, nullable: true),
-                    password = table.Column<string>(maxLength: 50, nullable: true),
+                    email = table.Column<string>(maxLength: 50, nullable: false),
+                    password = table.Column<string>(maxLength: 50, nullable: false),
                     status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Tb_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,6 +52,7 @@ namespace PromotionProduct.Api.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Tb_UserPromotion", x => x.Id);
                 });
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PromotionProduct.Api.Models
 {
-    public partial class TbUserPromotion
+    public partial class UserPromotionModel
     {
         public int Id { get; set; }
         public int UserId { get; set; }

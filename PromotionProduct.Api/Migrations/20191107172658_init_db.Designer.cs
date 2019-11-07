@@ -10,8 +10,8 @@ using PromotionProduct.Api.Models;
 namespace PromotionProduct.Api.Migrations
 {
     [DbContext(typeof(Promotion_DBContext))]
-    [Migration("20191107162301_init_Db")]
-    partial class init_Db
+    [Migration("20191107172658_init_db")]
+    partial class init_db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,19 +21,19 @@ namespace PromotionProduct.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PromotionProduct.Api.Models.TbPromotionProduct", b =>
+            modelBuilder.Entity("PromotionProduct.Api.Models.PromotionProductModel", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Detail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Expire")
                         .HasColumnType("datetime");
-
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -47,22 +47,26 @@ namespace PromotionProduct.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("Id");
+
                     b.ToTable("Tb_PromotionProduct");
                 });
 
-            modelBuilder.Entity("PromotionProduct.Api.Models.TbUser", b =>
+            modelBuilder.Entity("PromotionProduct.Api.Models.UserModel", b =>
                 {
-                    b.Property<string>("Email")
-                        .HasColumnName("email")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnName("email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnName("password")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
@@ -71,19 +75,21 @@ namespace PromotionProduct.Api.Migrations
                         .HasColumnName("status")
                         .HasColumnType("int");
 
+                    b.HasKey("Id");
+
                     b.ToTable("Tb_User");
                 });
 
-            modelBuilder.Entity("PromotionProduct.Api.Models.TbUserPromotion", b =>
+            modelBuilder.Entity("PromotionProduct.Api.Models.UserPromotionModel", b =>
                 {
-                    b.Property<bool>("History")
-                        .HasColumnName("history")
-                        .HasColumnType("bit");
-
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("History")
+                        .HasColumnName("history")
+                        .HasColumnType("bit");
 
                     b.Property<int>("PromotionId")
                         .HasColumnName("promotionId")
@@ -96,6 +102,8 @@ namespace PromotionProduct.Api.Migrations
                     b.Property<int>("UserId")
                         .HasColumnName("userId")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Tb_UserPromotion");
                 });

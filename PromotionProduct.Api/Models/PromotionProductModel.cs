@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PromotionProduct.Api.Models
 {
-    public partial class TbPromotionProduct
+    public partial class PromotionProductModel
     {
         public int Id { get; set; }
         public string Image { get; set; }

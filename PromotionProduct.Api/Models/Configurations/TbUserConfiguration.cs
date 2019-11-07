@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace PromotionProduct.Api.Models.Configurations
 {
-	public class TbUserConfiguration : IEntityTypeConfiguration<TbUser>
+	public class TbUserConfiguration : IEntityTypeConfiguration<UserModel>
 	{
-		public void Configure(EntityTypeBuilder<TbUser> Builder)
+		public void Configure(EntityTypeBuilder<UserModel> Builder)
 		{
 			
 			Builder.ToTable("Tb_User");

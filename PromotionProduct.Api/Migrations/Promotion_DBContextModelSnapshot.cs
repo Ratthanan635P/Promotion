@@ -19,7 +19,7 @@ namespace PromotionProduct.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PromotionProduct.Api.Models.TbPromotionProduct", b =>
+            modelBuilder.Entity("PromotionProduct.Api.Models.PromotionProductModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace PromotionProduct.Api.Migrations
                     b.ToTable("Tb_PromotionProduct");
                 });
 
-            modelBuilder.Entity("PromotionProduct.Api.Models.TbUser", b =>
+            modelBuilder.Entity("PromotionProduct.Api.Models.UserModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,11 +58,13 @@ namespace PromotionProduct.Api.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnName("email")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnName("password")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
@@ -76,7 +78,7 @@ namespace PromotionProduct.Api.Migrations
                     b.ToTable("Tb_User");
                 });
 
-            modelBuilder.Entity("PromotionProduct.Api.Models.TbUserPromotion", b =>
+            modelBuilder.Entity("PromotionProduct.Api.Models.UserPromotionModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
