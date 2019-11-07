@@ -12,8 +12,6 @@ namespace PromotionProduct.Api.Models.Configurations
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TbPromotionProduct> builder)
 		{
 
-			   builder.HasNoKey();
-
 			   builder.ToTable("Tb_PromotionProduct");
 
 			   builder.Property(e => e.Detail).IsRequired();

@@ -20,9 +20,10 @@ namespace PromotionProduct.Api
 			Host.CreateDefaultBuilder(args)
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
-					webBuilder
-					.UseUrls("http://*:3000")
-					.UseStartup<Startup>();
+					webBuilder.UseStartup<Startup>();
+
+					//.UseUrls("http://*:3000")
+					//.UseStartup<Startup>();
 				});
 	}
 }

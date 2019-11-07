@@ -11,8 +11,7 @@ namespace PromotionProduct.Api.Models.Configurations
 	{
 		public void Configure(EntityTypeBuilder<TbUser> Builder)
 		{
-			Builder.HasNoKey();
-
+			
 			Builder.ToTable("Tb_User");
 
 			Builder.Property(e => e.Email)
