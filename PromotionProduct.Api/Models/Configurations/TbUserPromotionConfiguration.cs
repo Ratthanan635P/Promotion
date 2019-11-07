@@ -23,7 +23,10 @@ namespace PromotionProduct.Api.Models.Configurations
 
 			builder.Property(e => e.Status).HasColumnName("status");
 
-			builder.Property(e => e.UserId).HasColumnName("userId"); 
+			builder.Property(e => e.UserId).HasColumnName("userId");
+			builder.HasOne(e => e.Id)
+		   //.WithMany()
+		   //.HasForeignKey(s => s.CurrentGradeId);
 		}
 	}
 }
