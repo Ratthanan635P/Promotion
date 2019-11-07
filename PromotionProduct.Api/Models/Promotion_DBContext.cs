@@ -27,7 +27,6 @@ namespace PromotionProduct.Api.Models
                optionsBuilder.UseSqlServer("Server=localhost;Database=Promotion_DB;Trusted_Connection=True;User Id=sa;Password=yourStrong(!)Password;Integrated Security=false;");
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());	

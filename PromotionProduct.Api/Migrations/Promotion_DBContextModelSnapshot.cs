@@ -13,7 +13,7 @@ namespace PromotionProduct.Api.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-//#pragma warning disable 612, 618
+#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
@@ -97,8 +97,7 @@ namespace PromotionProduct.Api.Migrations
 
                     b.ToTable("Tb_UserPromotion");
                 });
-			
-//#pragma warning restore 612, 618
+#pragma warning restore 612, 618
         }
     }
 }

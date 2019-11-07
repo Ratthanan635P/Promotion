@@ -10,8 +10,8 @@ using PromotionProduct.Api.Models;
 namespace PromotionProduct.Api.Migrations
 {
     [DbContext(typeof(Promotion_DBContext))]
-    [Migration("20191107112626_init_db")]
-    partial class init_db
+    [Migration("20191107162301_init_Db")]
+    partial class init_Db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

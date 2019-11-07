@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PromotionProduct.Api.Migrations
 {
-    public partial class init_db : Migration
+    public partial class init_Db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
