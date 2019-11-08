@@ -14,13 +14,6 @@ namespace PromotionProduct.Api.Controllers
     public class UserController : ControllerBase
     {
 		private readonly Promotion_DBContext context =new Promotion_DBContext();
-        //// GET: api/User
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
         //// GET: api/User/5
         [HttpGet]//Get Password
         public IActionResult Get(string email)
@@ -96,16 +89,6 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-		//// PUT: api/User/5
-		//[HttpPut("{id}")]
-  //      public void Put(int id, [FromBody] string value)
-  //      {
-  //      }
 
-  //      // DELETE: api/ApiWithActions/5
-  //      [HttpDelete("{id}")]
-  //      public void Delete(int id)
-  //      {
-  //      }
     }
 }

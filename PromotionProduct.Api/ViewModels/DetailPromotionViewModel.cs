@@ -11,5 +11,6 @@ namespace PromotionProduct.Api.ViewModels
 		public string Image { get; set; }
 		public string Detail { get; set; }
 		public DateTime Expire { get; set; }
+		public bool History { get; set; }
 	}
 }

@@ -48,13 +48,14 @@ namespace PromotionProduct.Api.Controllers
 			try
 			{
 				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1 && pro.Id== Promotionid)
-					.Select(pro => new DetailPromotionViewModel()
+					.Join(context.Tb_UserPromotion,  pro => pro.Id, up => up.PromotionId, ( pro, up) => new DetailPromotionViewModel()	
 					{
 						Id = pro.Id,
 						Expire = pro.Expire,
 						Detail = pro.Detail,
-						Image = pro.Image
-					}).ToList();
+						Image = pro.Image,
+						History=up.History
+					}).FirstOrDefault();
 
 				if (result == null)
 				{
