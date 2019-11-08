@@ -19,7 +19,7 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1)
+				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1&&pro.Expire>=DateTime.Today)
 					.Select(pro => new PromotionProductViewModel()
 					{
 						Id = pro.Id,
@@ -101,5 +101,28 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
+		[HttpPost("AddPromotion")]
+		public IActionResult AddPromotion([FromBody] PromotionProductModel command)
+		{
+			try
+			{
+				var result = context.Tb_PromotionProduct.Add(command);
+				if (result == null)
+				{
+					return BadRequest();
+				}
+				else
+				{
+					context.SaveChanges();
+					return Ok("Success");
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
+
+
 	}
 }

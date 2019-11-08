@@ -70,7 +70,7 @@ namespace PromotionProduct.Api.Controllers
 		public string RandomCode()
 		{
 			const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			return new string(Enumerable.Repeat(chars, random.Next(6,8))
+			return new string(Enumerable.Repeat(chars, random.Next(8,10))
 			  .Select(s => s[random.Next(s.Length)]).ToArray());
 		}
 
