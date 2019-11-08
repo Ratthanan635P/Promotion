@@ -56,7 +56,7 @@ namespace PromotionProduct.Api.Controllers
 				}
 				else
 				{
-					return Ok();
+					return Ok(result.Id);
 				}
 			}
 			catch (Exception e)
