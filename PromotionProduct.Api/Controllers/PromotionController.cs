@@ -102,15 +102,3 @@ namespace PromotionProduct.Api.Controllers
 		}
 	}
 }
-
-//List<ProductViewModel> products = _context.Product
-//				.Join(_context.Category,
-//				pro => pro.CatId,
-//				cat => cat.Id,
-//				(pro, cat) => new ProductViewModel()
-//				{
-//					Id = pro.Id,
-//					Name = pro.Name,
-//					Price = pro.Price,
-//					CategoryName = cat.Name
-//				}).ToList();
