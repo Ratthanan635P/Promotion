@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PromotionProduct.Api.Commands;
 using PromotionProduct.Api.Models;
 using PromotionProduct.Api.ViewModels;
 
@@ -42,20 +43,28 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-		[HttpGet("DetailPromotion")]//Get Data Promotion
-		public IActionResult DetailPromotion(int Promotionid)
+		[HttpPost("DetailPromotion")]//Get Data Promotion
+		public IActionResult DetailPromotion([FromBody] UpdateCommand command)
 		{
 			try
 			{
-				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1 && pro.Id== Promotionid)
-					.Join(context.Tb_UserPromotion,  pro => pro.Id, up => up.PromotionId, ( pro, up) => new DetailPromotionViewModel()	
+				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1 && pro.Id == command.PromotionId)
+					.Select(pro => new DetailPromotionViewModel()
 					{
 						Id = pro.Id,
 						Expire = pro.Expire,
 						Detail = pro.Detail,
 						Image = pro.Image,
-						History=up.History
 					}).FirstOrDefault();
+				var result2 = context.Tb_UserPromotion.Where(up => up.Status == 1 && up.PromotionId == command.PromotionId && up.UserId==command.UserId).FirstOrDefault();
+				if (result2 == null)
+				{
+					result.History = false;
+				}
+				else
+				{
+					result.History = result2.History;
+				}
 
 				if (result == null)
 				{
@@ -71,6 +80,7 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
+
 		[HttpGet("MyPromotion")]//Get My Promotion
 		public IActionResult MyPromotion(int id,bool history)
 		{
