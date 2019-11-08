@@ -35,7 +35,6 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
         }
-
 		// POST: api/User
 		[HttpPost("Login")]
 		public IActionResult LogIn([FromBody]LoginCommand user)

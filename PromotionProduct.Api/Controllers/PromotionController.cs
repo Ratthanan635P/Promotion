@@ -20,13 +20,13 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1&&pro.Expire>=DateTime.Today)
+				var result = context.Tb_PromotionProduct.Where(pro => pro.Status == 1 && pro.Expire >= DateTime.Today)
 					.Select(pro => new PromotionProductViewModel()
 					{
 						Id = pro.Id,
 						Expire = pro.Expire,
-						Title=pro.Title,
-						Image=pro.Image
+						Title = pro.Title,
+						Image = pro.Image
 					}).ToList();
 
 				if (result == null)
@@ -80,7 +80,6 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-
 		[HttpGet("MyPromotion")]//Get My Promotion
 		public IActionResult MyPromotion(int id,bool history)
 		{
@@ -132,7 +131,5 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-
-
 	}
 }

@@ -19,8 +19,8 @@ namespace PromotionProduct.Api.Controllers
 		public IActionResult GetCodePromotion([FromBody] UpdateCommand command)
 		{
 			try
-			{				
-				var result = context.Tb_UserPromotion.Where(up => up.UserId==command.UserId&&up.PromotionId==command.PromotionId).FirstOrDefault();
+			{
+				var result = context.Tb_UserPromotion.FirstOrDefault(up => up.UserId == command.UserId && up.PromotionId == command.PromotionId);
 				if (result == null)
 				{
 					return BadRequest();
@@ -66,7 +66,6 @@ namespace PromotionProduct.Api.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-
 		public string RandomCode()
 		{
 			const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
