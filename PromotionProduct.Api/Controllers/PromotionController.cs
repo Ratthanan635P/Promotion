@@ -30,13 +30,14 @@ namespace PromotionProduct.Api.Controllers
 					}).ToList();
 				var myPromotion = context.Tb_UserPromotion.Where(upro => upro.UserId == userId && upro.History == false)				
 					.ToList();
-				foreach (var myPro in myPromotion)
-				{
-					foreach (var item in result)
+
+				for (int i = 0; i < result.Count; i++)
+				{								
+					foreach (var myPro in myPromotion)
 					{
-						if (myPro.PromotionId == item.Id)
+						if (myPro.PromotionId == result[i].Id)
 						{
-							item.Like = true;
+								result[i].Like = true;
 	                    }
 					}
 				}
