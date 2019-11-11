@@ -11,5 +11,6 @@ namespace PromotionProduct.Api.Models
         public string Detail { get; set; }
         public DateTime Expire { get; set; }
         public int Status { get; set; }
-    }
+		//public int IsUsed { get; set; }
+	}
 }

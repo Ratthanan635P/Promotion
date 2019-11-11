@@ -14,5 +14,6 @@ namespace PromotionProduct.Api.Models
 		[StringLength(255,MinimumLength=6)]
         public string Password { get; set; }
         public int Status { get; set; }
-    }
+		//public int IsUsed { get; set; }
+	}
 }

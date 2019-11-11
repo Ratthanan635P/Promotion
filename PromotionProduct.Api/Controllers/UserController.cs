@@ -64,6 +64,20 @@ namespace PromotionProduct.Api.Controllers
 			{
 				return BadRequest("Confirm password is wrong!!");
 			}
+
+			try
+			{
+				var result = context.Tb_User.FirstOrDefault(u => u.Email == command.Email);
+				if (result != null)
+				{
+					return BadRequest("Email is exited");
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+
 			try
 			{
 				UserModel user = new UserModel()

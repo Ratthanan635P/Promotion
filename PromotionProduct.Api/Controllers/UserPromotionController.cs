@@ -42,24 +42,54 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				UserPromotionModel userModel = new UserPromotionModel()
+				var result = context.Tb_UserPromotion.FirstOrDefault(up => up.UserId == command.UserId && up.PromotionId == command.PromotionId);
+				if (result == null)
 				{
-					History = false,
-					Status = 1,
-					UserId = command.UserId,
-					PromotionId = command.PromotionId
-				};
+					UserPromotionModel userModel = new UserPromotionModel()
+					{
+						History = false,
+						Status = 1,
+						UserId = command.UserId,
+						PromotionId = command.PromotionId
+					};
 
-				var result = context.Tb_UserPromotion.Add(userModel);
-				if(result==null)
-				{
-					return BadRequest();
+					var resultAdd = context.Tb_UserPromotion.Add(userModel);
+					if (resultAdd == null)
+					{
+						return BadRequest();
+					}
+					else
+					{
+						context.SaveChanges();
+						return Ok("Success");
+					}
 				}
 				else
 				{
-					context.SaveChanges();
-					return Ok("Success");
-				}
+					return Ok("Used in My List Promotion!");
+				}				
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
+		[HttpPost("RemoveMyPromotion")]
+		public IActionResult RemoveMyPromotion([FromBody] UpdateCommand command)
+		{
+			try
+			{
+					var result = context.Tb_UserPromotion.FirstOrDefault(up => up.UserId == command.UserId && up.PromotionId == command.PromotionId);
+					if (result == null)
+					{
+						return BadRequest();
+					}
+					else
+					{
+						result.Status = 0;
+						context.SaveChanges();
+						return Ok();
+					}			
 			}
 			catch (Exception e)
 			{

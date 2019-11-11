@@ -16,7 +16,7 @@ namespace PromotionProduct.Api.Controllers
     {
 		private readonly Promotion_DBContext context = new Promotion_DBContext();
 		[HttpGet]//Get Data Promotion
-		public IActionResult Get()
+		public IActionResult Get(int userId)
 		{
 			try
 			{
@@ -28,7 +28,18 @@ namespace PromotionProduct.Api.Controllers
 						Title = pro.Title,
 						Image = pro.Image
 					}).ToList();
-
+				var myPromotion = context.Tb_UserPromotion.Where(upro => upro.UserId == userId && upro.History == false)				
+					.ToList();
+				foreach (var myPro in myPromotion)
+				{
+					foreach (var item in result)
+					{
+						if (myPro.PromotionId == item.Id)
+						{
+							item.Like = true;
+	                    }
+					}
+				}
 				if (result == null)
 				{
 					return NotFound();
@@ -56,14 +67,14 @@ namespace PromotionProduct.Api.Controllers
 						Detail = pro.Detail,
 						Image = pro.Image,
 					}).FirstOrDefault();
-				var result2 = context.Tb_UserPromotion.Where(up => up.Status == 1 && up.PromotionId == command.PromotionId && up.UserId==command.UserId).FirstOrDefault();
-				if (result2 == null)
+				var myPromotion = context.Tb_UserPromotion.Where(up => up.Status == 1 && up.PromotionId == command.PromotionId && up.UserId==command.UserId).FirstOrDefault();
+				if (myPromotion == null)
 				{
 					result.History = false;
 				}
 				else
 				{
-					result.History = result2.History;
+					result.History = myPromotion.History;
 				}
 
 				if (result == null)
@@ -85,7 +96,7 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				var result = context.Tb_UserPromotion.Where(upro => upro.UserId == id &&upro.History== history)
+				var result = context.Tb_UserPromotion
 					.Join(context.Tb_PromotionProduct, up => up.PromotionId, pro => pro.Id, (up, pro) => new MyPromotionViewModel()
 					{
 						Id = pro.Id,
@@ -95,7 +106,7 @@ namespace PromotionProduct.Api.Controllers
 						History= up.History
 					})
 					.ToList();
-				
+				//.Where(upro => upro.UserId == id && upro.History == history)
 				if (result == null)
 				{
 					return NotFound();

@@ -10,5 +10,6 @@ namespace PromotionProduct.Api.Models
 		public int PromotionId { get; set; }
         public bool History { get; set; }
         public int Status { get; set; }
-    }
+		//public int IsUsed { get; set; }
+	}
 }
