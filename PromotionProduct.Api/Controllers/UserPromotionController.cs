@@ -29,7 +29,8 @@ namespace PromotionProduct.Api.Controllers
 				{
 					result.History = true;
 					context.SaveChanges();
-					return Ok(RandomCode());
+					string code=RandomCode();
+					return Ok(code);
 				}
 			}
 			catch (Exception e)
