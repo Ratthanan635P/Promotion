@@ -65,6 +65,7 @@ namespace PromotionProduct.Api.Controllers
 					{
 						Id = pro.Id,
 						Expire = pro.Expire,
+						Title=pro.Title,
 						Detail = pro.Detail,
 						Image = pro.Image,
 					}).FirstOrDefault();
@@ -97,13 +98,14 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				var result = context.Tb_UserPromotion
+				var result = context.Tb_UserPromotion.Where(up=>up.UserId==id&&up.History==history)
 					.Join(context.Tb_PromotionProduct, up => up.PromotionId, pro => pro.Id, (up, pro) => new MyPromotionViewModel()
 					{
 						Id = pro.Id,
 						Expire = pro.Expire,
 						Title = pro.Title,
 						Image = pro.Image,
+						Detail=pro.Detail,
 						History= up.History
 					})
 					.ToList();

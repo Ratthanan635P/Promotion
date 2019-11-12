@@ -12,7 +12,7 @@ namespace PromotionProduct.Api.Commands
 		[Required]
 		public string Email { get; set; }
 		[Required]
-		[StringLength(255, MinimumLength = 6)]
+		//[StringLength(255, MinimumLength = 6)]
 		public string Password { get; set; }
 		public string ConfirmPassword { get; set; }
 	}
