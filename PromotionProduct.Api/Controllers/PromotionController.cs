@@ -26,6 +26,7 @@ namespace PromotionProduct.Api.Controllers
 						Id = pro.Id,
 						Expire = pro.Expire,
 						Title = pro.Title,
+						Detail=pro.Detail,
 						Image = pro.Image
 					}).ToList();
 				var myPromotion = context.Tb_UserPromotion.Where(upro => upro.UserId == userId && upro.History == false)				
