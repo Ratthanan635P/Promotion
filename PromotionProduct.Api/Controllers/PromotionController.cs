@@ -99,7 +99,7 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				var result = context.Tb_UserPromotion.Where(up=>up.UserId==id&&up.History==history)
+				var result = context.Tb_UserPromotion.Where(up=>up.UserId==id&&up.History==history&&up.Status==1)
 					.Join(context.Tb_PromotionProduct, up => up.PromotionId, pro => pro.Id, (up, pro) => new MyPromotionViewModel()
 					{
 						Id = pro.Id,

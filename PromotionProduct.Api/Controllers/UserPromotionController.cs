@@ -43,7 +43,7 @@ namespace PromotionProduct.Api.Controllers
 		{
 			try
 			{
-				var result = context.Tb_UserPromotion.FirstOrDefault(up => up.UserId == command.UserId && up.PromotionId == command.PromotionId);
+				var result = context.Tb_UserPromotion.FirstOrDefault(up => up.UserId == command.UserId && up.PromotionId == command.PromotionId&&up.Status==1);
 				if (result == null)
 				{
 					UserPromotionModel userModel = new UserPromotionModel()
